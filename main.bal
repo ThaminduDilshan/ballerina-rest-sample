@@ -1,25 +1,25 @@
 import ballerina/http;
 
-type Album readonly & record {|
-    string title;
-    string artist;
+type LoginRecord readonly& record {|
+    string key;
+    string userId;
+    string username;
+    string organization;
 |};
 
-table<Album> key(title) albums = table [
-    {title: "Blue Train", artist: "John Coltrane"},
-    {title: "Jeru", artist: "Gerry Mulligan"}
+table<LoginRecord> key(key) loginRecords = table [
 ];
 
 service / on new http:Listener(9090) {
 
-    resource function get albums() returns Album[] {
+    resource function get records() returns LoginRecord[] {
 
-        return albums.toArray();
+        return loginRecords.toArray();
     }
 
-    resource function post albums(Album album) returns Album {
+    resource function post records(LoginRecord loginRecord) returns LoginRecord {
         
-        albums.add(album);
-        return album;
+        loginRecords.add(loginRecord);
+        return loginRecord;
     }
 }
