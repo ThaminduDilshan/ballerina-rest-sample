@@ -19,7 +19,7 @@ service / on new http:Listener(9090) {
 
     resource function post records(LoginRecord loginRecord) returns LoginRecord {
         
-        loginRecords.add(loginRecord);
+        // loginRecords.add(loginRecord);
         return loginRecord;
     }
 }
